@@ -1,0 +1,16 @@
+#!/bin/sh
+
+# script/bootstrap: Resolve all dependencies that the application requires to
+#                   run.
+
+set -e
+
+cd "$(dirname "$0")/.."
+
+if [ -f api/composer.json ]; then
+  docker-compose up composer || {
+    echo "==> The dependency installation for the api application was not successful. Please run script/update.";
+  }
+else
+  echo "==> Can not install API dependencies. Please execute script/init first!"
+fi

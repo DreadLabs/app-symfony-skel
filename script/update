@@ -1,0 +1,20 @@
+#!/bin/sh
+
+# script/update: Update application to run for its current checkout.
+
+set -e
+
+cd "$(dirname "$0")/.."
+
+script/bootstrap
+
+docker run \
+  --rm \
+  --volume "$(pwd)"/api:/app:delegated \
+  --workdir /app \
+  --entrypoint /usr/local/bin/entrypoint-suexec.sh \
+  dreadlabs/symfony-app-dev:1.0 /bin/bash -c 'app/console assets:install ; app/console assetic:dump'
+
+# echo "==> Updating db…"
+# run all database migrations to ensure everything is up to date.
+# bin/rake db:migrate

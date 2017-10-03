@@ -1,0 +1,40 @@
+version: '3'
+
+volumes:
+    composer-cache:
+    app-var:
+    app-nginx:
+
+services:
+    composer:
+        image: dreadlabs/symfony-app-dev:1.0
+        volumes:
+            - composer-cache:/var/cache/composer
+            - app-var:/var/app
+            - ./api/:/app:delegated
+        working_dir: /app
+        entrypoint: ["/usr/local/bin/entrypoint-suexec.sh"]
+        command: ["composer", "install", "--prefer-dist", "--optimize-autoloader", "--no-ansi", "--no-interaction"]
+
+    app:
+        image: dreadlabs/symfony-app-dev:1.0
+        environment:
+          - PHP_IDE_CONFIG=serverName=app
+        volumes:
+            - app-var:/var/app
+            - ./api/:/app:cached
+            - app-nginx:/etc/nginx/conf.d/
+        expose:
+            - 9000
+        working_dir: /app
+        entrypoint: ["/usr/local/bin/entrypoint-suexec.sh"]
+        command: ["php-fpm7.0"]
+
+    nginx:
+        image: nginx:stable
+        ports:
+            - 8080:80
+        volumes:
+            - app-nginx:/etc/nginx/conf.d/
+        depends_on:
+            - app

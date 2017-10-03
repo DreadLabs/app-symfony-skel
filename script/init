@@ -1,0 +1,22 @@
+#!/bin/sh
+
+# script/init: Initializes a new project
+
+set -e
+
+cd "$(dirname "$0")/.."
+
+script/bootstrap
+
+echo "==> Initializing Symfony 2 application…"
+if [ ! -d api/src ]; then
+  docker run \
+    --rm \
+    --volume "$(pwd)":/app \
+    --entrypoint /usr/local/bin/entrypoint-suexec.sh
+    dreadlabs/php-symfony:7.0 symfony --no-ansi new api 2.8
+else
+  echo "==> Symfony 2 application already initialized"
+fi
+
+echo "==> Project initialized."

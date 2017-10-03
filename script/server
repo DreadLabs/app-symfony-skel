@@ -1,0 +1,19 @@
+#!/bin/sh
+
+# script/server: Launch the application and any extra required processes
+#                locally.
+
+set -e
+
+cd "$(dirname "$0")/.."
+
+# ensure everything in the app is up to date.
+script/update
+
+trap "docker-compose stop" SIGHUP SIGINT SIGTERM
+
+echo "==> Starting server"
+docker-compose up -d
+
+echo "==> Attaching log output of app"
+docker-compose logs --follow
