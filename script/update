@@ -13,7 +13,8 @@ docker run \
   --volume "$(pwd)"/api:/app:delegated \
   --workdir /app \
   --entrypoint /usr/local/bin/entrypoint-suexec.sh \
-  dreadlabs/symfony-app-dev:1.0 /bin/bash -c 'app/console assets:install ; app/console assetic:dump'
+  dreadlabs/symfony-app:1.0-dev \
+  /bin/bash -c 'app/console assets:install ; app/console assetic:dump'
 
 # echo "==> Updating db…"
 # run all database migrations to ensure everything is up to date.

@@ -34,12 +34,14 @@ if [ -n "$1" ]; then
     --volume "$(pwd)"/api:/app:cached \
     --workdir /app \
     --entrypoint /usr/local/bin/entrypoint-suexec.sh \
-    dreadlabs/symfony-app-dev:1.0 composer test-unit -- "$1"
+    dreadlabs/symfony-app:1.0-dev \
+    composer test-unit -- "$1"
 else
   docker run \
     --rm \
     --volume "$(pwd)"/api:/app:cached \
     --workdir /app \
     --entrypoint /usr/local/bin/entrypoint-suexec.sh \
-    dreadlabs/symfony-app-dev:1.0 composer test-unit
+    dreadlabs/symfony-app:1.0-dev \
+    composer test-unit
 fi

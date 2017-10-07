@@ -24,7 +24,7 @@ if [ -n "$1" ]; then
       --volume "$(pwd)"/api:/app:cached \
       --workdir /app \
       --entrypoint /usr/local/bin/entrypoint-suexec.sh \
-      dreadlabs/symfony-app-dev:1.0 /bin/bash
+      dreadlabs/symfony-app:1.0-dev /bin/bash
   else
     echo "Sorry, I don't know how to connect to the '$1' environment."
     exit 1
