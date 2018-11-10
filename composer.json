@@ -1,0 +1,13 @@
+{
+    "name": "dreadlabs/app-symfony-skel",
+    "description": "Symfony application skeleton",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Thomas Juhnke",
+            "email": "contact@dreadlabs.de"
+        }
+    ],
+    "require": {}
+}
