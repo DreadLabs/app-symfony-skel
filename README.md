@@ -2,17 +2,16 @@
 
 ## Description
 
-This is a content management solution, aiming at providing an user friendly gateway for editing
-data of the *Acme* project.
+This is a <insert topic here> solution, aiming at providing an user friendly gateway for <insert business value here> of 
+the *Acme* project.
 
 It provides an **API-first** backend and a web-based UI.
 
-This repository contains both applications, in fact it is some kind of a *monolithic repository*, 
-which is in fact used by many [companies](#monorepos). The API application resides in the `api`
-directory and the UI respectively in the `ui` directory.
+This repository contains multiple applications, being some kind of a *monolithic repository*, which is used by many 
+[companies](#monorepos). The API application resides in the `api` directory and the UI respectively in the `ui` directory.
 
-It uses the [Scripts To Rule Them All](#strta) approach of the GitHub guys to provide streamlined
-entrypoints for team collaboration.
+It uses the [Scripts To Rule Them All](#strta) approach of the GitHub guys to provide streamlined entrypoints for team 
+collaboration.
 
 ## Requirements
 

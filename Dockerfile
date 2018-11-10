@@ -1,4 +1,4 @@
-FROM dreadlabs/symfony-app:1.0-base
+FROM dreadlabs/php-symfony:7.0-base
 
 MAINTAINER Thomas Juhnke <dev@van-tomas.de>
 

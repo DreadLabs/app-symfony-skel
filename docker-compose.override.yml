@@ -7,7 +7,7 @@ volumes:
 
 services:
     composer:
-        image: dreadlabs/symfony-app:1.0-dev
+        image: dreadlabs/php-symfony:7.0-dev
         volumes:
             - composer-cache:/var/cache/composer
             - app-var:/var/app
@@ -17,7 +17,7 @@ services:
         command: ["composer", "install", "--prefer-dist", "--optimize-autoloader", "--no-ansi", "--no-interaction"]
 
     app:
-        image: dreadlabs/symfony-app:1.0-dev
+        image: dreadlabs/php-symfony:7.0-dev
         environment:
           - PHP_IDE_CONFIG=serverName=app
         volumes:
