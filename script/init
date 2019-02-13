@@ -14,7 +14,7 @@ if [ ! -d api/src ]; then
     --rm \
     --volume "$(pwd)":/app \
     --entrypoint /usr/local/bin/entrypoint-suexec.sh
-    dreadlabs/php-symfony:7.0-dev \
+    dreadlabs/php-symfony:7.3-dev \
     symfony --no-ansi new api 3.4
 else
   echo "==> Symfony 2 application already initialized"

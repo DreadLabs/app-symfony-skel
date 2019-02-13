@@ -24,7 +24,7 @@ if [ -n "$1" ]; then
       --volume "$(pwd)"/api:/app:cached \
       --workdir /app \
       --entrypoint /usr/local/bin/entrypoint-suexec.sh \
-      dreadlabs/php-symfony:7.0-dev /bin/bash
+      dreadlabs/php-symfony:7.3-dev /bin/bash
   else
     echo "Sorry, I don't know how to connect to the '$1' environment."
     exit 1
@@ -33,5 +33,5 @@ else
   # no argument provided, so just run the local console in the development
   # environment. Ensure the application is up to date first.
   script/update
-  docker run --rm --interactive --tty dreadlabs/debian-base:9-stretch /bin/bash
+  docker run --rm --interactive --tty dreadlabs/debian-base:10-buster /bin/bash
 fi

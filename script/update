@@ -13,7 +13,7 @@ docker run \
   --volume "$(pwd)"/api:/app:delegated \
   --workdir /app \
   --entrypoint /usr/local/bin/entrypoint-suexec.sh \
-  dreadlabs/php-symfony:7.0-dev \
+  dreadlabs/php-symfony:7.3-dev \
   /bin/bash -c 'app/console assets:install ; app/console assetic:dump'
 
 # echo "==> Updating db…"

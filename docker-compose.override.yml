@@ -7,7 +7,7 @@ volumes:
 
 services:
     composer:
-        image: dreadlabs/php-symfony:7.0-dev
+        image: dreadlabs/php-symfony:7.3-dev
         volumes:
             - composer-cache:/var/cache/composer
             - app-var:/var/app
@@ -17,7 +17,7 @@ services:
         command: ["composer", "install", "--prefer-dist", "--optimize-autoloader", "--no-ansi", "--no-interaction"]
 
     app:
-        image: dreadlabs/php-symfony:7.0-dev
+        image: dreadlabs/php-symfony:7.3-dev
         environment:
           - PHP_IDE_CONFIG=serverName=app
         volumes:
@@ -28,7 +28,7 @@ services:
             - 9000
         working_dir: /app
         entrypoint: ["/usr/local/bin/entrypoint-suexec.sh"]
-        command: ["php-fpm7.0"]
+        command: ["php-fpm7.3"]
 
     nginx:
         image: nginx:stable
